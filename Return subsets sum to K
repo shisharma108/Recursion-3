@@ -1,0 +1,48 @@
+Return subsets sum to K
+Send Feedback
+Given an array A of size n and an integer K, return all subsets of A which sum to K.
+Subsets are of length varying from 0 to n, that contain elements of the array. But the order of elements should remain same as in the input array.
+Note : The order of subsets are not important.
+Input format :
+Line 1 : Integer n, Size of input array
+Line 2 : Array elements separated by space
+Line 3 : K 
+Constraints :
+1 <= n <= 20
+Sample Input :
+9 
+5 12 3 17 1 18 15 3 17 
+6
+Sample Output :
+3 3
+5 1
+
+
+## Read input as specified in the question.
+## Print output as specified in the question.
+
+def subsum(arr,i,k,l):
+    if i==len(arr):
+        return []
+    elif arr[i]==k:
+        for j in l:
+            print(j,end=' ')
+        print(k)
+    if arr[i]<k:
+        l.append(arr[i])
+        subsum(arr,i+1,k-arr[i],l)
+        l.pop()
+        subsum(arr,i+1,k,l)
+    else:
+        subsum(arr,i+1,k,l)
+    
+        
+            
+        
+n = int(input())
+arr = [int(x) for x in input().split()]
+k = int(input())
+subsum(arr,0,k,[])
+
+
+
