@@ -1,0 +1,36 @@
+Return Permutations of a String
+Send Feedback
+Given a string, find and return all the possible permutations of the input string.
+Note : The order of permutations are not important.
+Sample Input :
+abc
+Sample Output :
+abc
+acb
+bac
+bca
+cab
+cba
+
+
+
+def permutationString(s):
+    if len(s)==0:
+        return [""]
+    smallOutput = permutationString(s[1:])
+    
+    
+    output=[]
+    for i in range(len(s)):
+        for string in smallOutput:
+            if i==0:
+                output.append(s[0]+string)
+            else:
+                output.append(string[:i]+s[0]+string[i:])
+    return output
+
+
+s=input()
+permutation=permutationString(s)
+for i in permutation:
+    print(i)
